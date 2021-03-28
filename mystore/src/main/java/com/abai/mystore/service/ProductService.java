@@ -1,6 +1,6 @@
 package com.abai.mystore.service;
 
-import com.abai.mystore.domain.Product;
+import com.abai.mystore.entity.Product;
 import com.abai.mystore.reposytory.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
