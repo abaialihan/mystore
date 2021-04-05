@@ -21,5 +21,4 @@ public class Product extends BaseEntity {
     @Column(name = "image")
     private String image;
 
-
 }

@@ -17,9 +17,12 @@ import java.util.List;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private final UserRepo userRepo;
+    @Autowired
     private final RoleRepo roleRepo;
     //для записи пароля с шифрованием
+    @Autowired
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
