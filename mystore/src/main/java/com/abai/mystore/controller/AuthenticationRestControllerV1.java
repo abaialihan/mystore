@@ -2,7 +2,6 @@ package com.abai.mystore.controller;
 
 import com.abai.mystore.dto.AuthenticationRequestDto;
 import com.abai.mystore.entity.User;
-import com.abai.mystore.security.jwt.Exeptions.JwtAuthenticationExeptions;
 import com.abai.mystore.security.jwt.JwtTokenProvider;
 import com.abai.mystore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.HashMap;
 import java.util.Map;
 
