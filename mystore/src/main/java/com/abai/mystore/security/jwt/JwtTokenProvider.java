@@ -30,12 +30,12 @@ public class JwtTokenProvider {
 
     //время за которое токен будет заекспайрен
     @Value("${jwt.token.expired}")
-    private Long validityMilliSec;
+    private long validityMilliSec;
 
     @Autowired
     private UserDetailsService userDetailsService;
 
-    //шифруем пароль пользователей
+    // шифруем пароль пользователей
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -92,6 +92,7 @@ public class JwtTokenProvider {
     public boolean isValidateToken(String token){
         try {
             Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+
             if (claimsJws.getBody().getExpiration().before(new Date())){
                 return false;
             }

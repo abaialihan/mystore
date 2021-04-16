@@ -1,5 +1,6 @@
 package com.abai.mystore.controller;
 
+import com.abai.mystore.dto.UserDto;
 import com.abai.mystore.entity.User;
 import com.abai.mystore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/v1/admin/")
 public class AdminRestControllerV1 {
 
-    @Autowired
     private UserService userService;
 
-    @GetMapping(value = "users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable(name = "id") Long id){
-        User result = userService.findById(id);
+    @Autowired
+    public AdminRestControllerV1(UserService userService) {
+        this.userService = userService;
+    }
 
-        if(result == null){
+    @GetMapping(value = "users/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id){
+        User user = userService.findById(id);
+
+        if(user == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
+
+        UserDto result = UserDto.fromUser(user);
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
