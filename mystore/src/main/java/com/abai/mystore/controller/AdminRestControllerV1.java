@@ -1,5 +1,6 @@
 package com.abai.mystore.controller;
 
+import com.abai.mystore.dto.AdminDto;
 import com.abai.mystore.dto.UserDto;
 import com.abai.mystore.entity.User;
 import com.abai.mystore.service.UserService;
@@ -23,14 +24,14 @@ public class AdminRestControllerV1 {
     }
 
     @GetMapping(value = "users/{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id){
+    public ResponseEntity<AdminDto> getUserById(@PathVariable(name = "id") Long id){
         User user = userService.findById(id);
 
         if(user == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        UserDto result = UserDto.fromUser(user);
+        AdminDto result = AdminDto.fromUser(user);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
